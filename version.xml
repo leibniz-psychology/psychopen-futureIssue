@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE version SYSTEM "../../../lib/pkp/dtd/pluginVersion.dtd">
+<version>
+    <application>futureIssueOverview</application>
+    <type>plugins.generic</type>
+    <release>0.0.0.1</release>
+    <date>2019-10-01</date>
+    <lazy-load>1</lazy-load>
+    <class>FutureIssueOverview</class>
+</version>
