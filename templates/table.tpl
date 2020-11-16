@@ -6,7 +6,6 @@
         {include file="frontend/components/headerHead.tpl"}
     </head>
 {/strip}
-
 <body>
 <div>
     <table class="table">
@@ -25,19 +24,19 @@
         </tr>
         </thead>
         <tbody>
-        {foreach from=$result item=article}
+        {foreach from=$result item=res}
             <tr>
-                <th>{$article['articleId']}</th>
+                <th>{$res['articleId']}</th>
                 <td class="copy_to_clip_td">
-                    <span class="copy_to_clip_txt">{$article['article']->getLocalizedTitle($article['article']->getLanguage())}</span>
+                    <span class="copy_to_clip_txt">{$res['publication']->getLocalizedTitle($res['publication']->getData('locale'))}</span>
                 </td>
                 <td class="copy_to_clip_td">
-                    <span class="copy_to_clip_txt">{$article['article']->getSectionTitle()}</span>
+                    <span class="copy_to_clip_txt">{$res['section']->getLocalizedData('title', $res['publication']->getData('locale'))}</span>
                 </td>
                 <td class="copy_to_clip_td">
                     <div class="copy_to_clip_txt">
                         <ul class="list-group list-group-flush" style="margin: 0; padding: 0">
-                            {foreach from=$article['authors'] item=author}
+                            {foreach from=$res['authors'] item=author}
                                 <li class="list-group-item" style="margin: 0; padding: 0">
                                     {$author->getFullName()}
                                 </li>
@@ -47,14 +46,14 @@
                 </td>
                 <td class="copy_to_clip_td">
                     <span class="copy_to_clip_txt">
-                    {$article['primary']->getEmail()}
+	                    {$res['primary']->getEmail()}
                     </span>
                 </td>
                 <td class="copy_to_clip_td">
                     <span class="copy_to_clip_txt">
                     {foreach from=$pubIdPlugins item=pubIdPlugin}
                         {if $pubIdPlugin->getPubIdType() == 'doi'}
-                            {$pubIdPlugin->getPubId($article['article'])}{* Preview pubId *}
+                            {$pubIdPlugin->getPubId($res['publication'])}{* Preview pubId *}
                         {/if}
                     {/foreach}
                     </span>
@@ -62,7 +61,7 @@
                 <td class="copy_to_clip_td">
                     <div class="copy_to_clip_txt">
                         <ul class="list-group list-group-flush" style="margin: 0; padding: 0">
-                            {foreach from=$article['assignedUsers'] item=user}
+                            {foreach from=$res['assignedUsers'] item=user}
                                 <li class="list-group-item" style="margin: 0; padding: 0">
                                     {$user->getFullName()}
                                 </li>
@@ -71,14 +70,14 @@
                     </div>
                 </td>
                 <td class="copy_to_clip_td">
-                    <span class="copy_to_clip_txt">{$article['article']->getDateSubmitted()|date_format:"%d.%m.%Y"}</span>
+                    <span class="copy_to_clip_txt">{$res['publication']->getDateSubmitted()|date_format:"%d.%m.%Y"}</span>
                 </td>
                 <td class="copy_to_clip_td">
-                    <span class="copy_to_clip_txt">{$article['accepted']|date_format:"%d.%m.%Y"}</span>
+                    <span class="copy_to_clip_txt">{$res['accepted']|date_format:"%d.%m.%Y"}</span>
                 </td>
                 <td class="copy_to_clip_td">
                     <div class="copy_to_clip_txt">
-                        {foreach from=$article['reviewRounds'] item=reviews key=key}
+                        {foreach from=$res['reviewRounds'] item=reviews key=key}
                             <div class="row mb-3">
                                 <div class="col-12">
                                     <div class="mb-1 font-weight-bold">Round: {$key}</div>

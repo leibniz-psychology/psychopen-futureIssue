@@ -46,8 +46,6 @@ class FutureIssueOverview extends GenericPlugin
     public function templateFetchCallback($hookName, $params)
     {
         $request = $this->getRequest();
-        $user = $request->getUser();
-        $journal = $request->getJournal();
         $router = $request->getRouter();
         $dispatcher = $router->getDispatcher();
         $templateMgr = $params[0];

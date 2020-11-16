@@ -33,8 +33,9 @@ class FutureIssueHandler extends Handler
 
     public function table($args, $request)
     {
-        $publishedArticleDao =& DAORegistry::getDAO('PublishedArticleDAO');
-        $authorDao =& DAORegistry::getDAO('AuthorDAO');
+
+    	$context = $request->getContext();
+    	$contextId = $context ? $context->getId() : CONTEXT_SITE;
         $assignmentDao =& DAORegistry::getDAO('UserStageAssignmentDAO');
         $editDecisionDao =& DAORegistry::getDAO('EditDecisionDAO');
         $reviewDao =& DAORegistry::getDAO('ReviewAssignmentDAO');
@@ -42,13 +43,22 @@ class FutureIssueHandler extends Handler
         $templateMgr = TemplateManager::getManager($request);
         $templateMgr->assign('pubIdPlugins', $pubIdPlugins);
         $issueId = isset($args[0]) ? (int)$args[0] : null;
-        $articles = $publishedArticleDao->getPublishedArticles($issueId);
+	    $submissionsIterator =Services::get('submission')->getMany([
+		    'contextId' => $contextId,
+		    'issueIds' => $issueId,
+		    'status' => STATUS_SCHEDULED,
+	    ]);
         $result = array();
-        foreach ($articles as $article) {
-            $articleId = $article->getId();
-            $editDecisions = $editDecisionDao->getEditorDecisions($articleId);
+        foreach ($submissionsIterator as $submission) {
+	        $publication = $submission->getCurrentPublication();
+	        $sectionDao = DAORegistry::getDAO('SectionDAO'); /** @var $sectionDao SectionDAO */
+	        if ($sectionId = $publication->getData('sectionId')) {
+		        $section = $sectionDao->getById($sectionId);
+	        }
+            $submissionId = $submission->getId();
+            $editDecisions = $editDecisionDao->getEditorDecisions($submissionId);
             $accepted = null;
-            $reviews = $reviewDao->getBySubmissionId($articleId);
+            $reviews = $reviewDao->getBySubmissionId($submissionId);
             $rounds = array();
             foreach ($reviews as $review) {
                 if ($review->getStatus()>6)
@@ -59,8 +69,9 @@ class FutureIssueHandler extends Handler
                     $accepted = $editDecision['dateDecided'];
                 }
             }
-            $authors = $authorDao->getBySubmissionId($articleId);
-            $editors = $assignmentDao->getUsersBySubmissionAndStageId($articleId, 1)->toArray();
+	        $primaryContact = Services::get('author')->get($publication->getData('primaryContactId'));
+            $authors = $publication->getData('authors');
+            $editors = $assignmentDao->getUsersBySubmissionAndStageId($submissionId, 1)->toArray();
             $count = 0;
             foreach ($editors as $editor) {
                 foreach ($authors as $author) {
@@ -72,11 +83,12 @@ class FutureIssueHandler extends Handler
                 $count++;
             }
             $art_res = array(
-                "articleId" => $articleId,
+                "articleId" => $submission->getId(),
+                "section" => $section,
                 "accepted" => $accepted,
-                "article" => $article,
+                "publication" => $submission,
                 "authors" => $authors,
-                "primary" => $authorDao->getPrimaryContact($articleId),
+                "primary" => $primaryContact,
                 "assignedUsers" => $editors,
                 "reviewRounds" => $rounds
             );
