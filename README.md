@@ -10,7 +10,7 @@
 ## Description
 This plugin is used by PsychOpen to displays all important article metadata of a future issue.
 
-After installation and activation it shows a new button "Tableview" in the action-row of the future output.
+After installation and activation a "Tableview" button is displayed in the action-row of the future output.
 ![New Button](https://user-images.githubusercontent.com/7657717/99265966-93498480-2822-11eb-9f44-518d1898f6d3.jpg)
 
 ## Installation
