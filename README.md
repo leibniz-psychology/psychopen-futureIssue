@@ -1,6 +1,6 @@
 # psychopen-futureIssue
 
-[![Build Status](https://travis-ci.com/leibniz-psychology/psychopen-futureIssue.svg?branch=master)](https://travis-ci.com/leibniz-psychology/psychopen-futureIssue)
+[![Build Status](https://travis-ci.com/leibniz-psychology/psychopen-futureIssue.svg?branch=main)](https://travis-ci.com/leibniz-psychology/psychopen-futureIssue)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/leibniz-psychology/psychopen-futureIssue?include_prereleases&label=latest%20release)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/leibniz-psychology/psychopen-futureIssue)
 ![GitHub](https://img.shields.io/github/license/leibniz-psychology/psychopen-futureIssue)
