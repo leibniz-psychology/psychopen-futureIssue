@@ -14,7 +14,7 @@ describe('FutureIssueOverview plugin tests', function () {
 				if ($btn.attr('checked') === 'checked') {
 					cy.get('input[id^="select-cell-futureissueoverview-enabled"]').click();
 					cy.get('div[class*="pkp_modal_panel"] button[class*="pkpModalConfirmButton"]').click();
-					cy.get('div:contains(\'The plugin "Future Issue Table View" has been disabled.\')');
+					cy.get('div:contains(\'The plugin "Future Issue Article Table" has been disabled.\')');
 				}
 			});
 	});
@@ -25,6 +25,6 @@ describe('FutureIssueOverview plugin tests', function () {
 		cy.get('button[id="plugins-button"]').click();
 		// Find and enable the plugin
 		cy.get('input[id^="select-cell-futureissueoverview-enabled"]').click();
-		cy.get('div:contains(\'The plugin "Future Issue Table View" has been enabled.\')');
+		cy.get('div:contains(\'The plugin "Future Issue Article Table" has been enabled.\')');
 	});
 });
