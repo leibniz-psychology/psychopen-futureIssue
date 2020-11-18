@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-11-18T12:06:09+00:00\n"
+"PO-Revision-Date: 2020-11-18T12:06:09+00:00\n"
+"Language: \n"
+
+msgid "plugins.generic.issue.overview.displayName"
+msgstr "Future Issue Article Table"
+
+msgid "plugins.generic.issue.overview.description"
+msgstr "This plugin adds an additional page that shows an overview of all publications of a future issue."
+
+msgid "plugins.generic.issue.overview.link"
+msgstr "Show All Publications"
+
+msgid "plugins.generic.issue.overview.title"
+msgstr "Title"
+
+msgid "plugins.generic.issue.overview.id"
+msgstr "ID"
+
+msgid "plugins.generic.issue.overview.section"
+msgstr "Section"
+
+msgid "plugins.generic.issue.overview.authors"
+msgstr "Authors"
+
+msgid "plugins.generic.issue.overview.primary"
+msgstr "Primary Contact"
+
+msgid "plugins.generic.issue.overview.doi"
+msgstr "DOI"
+
+msgid "plugins.generic.issue.overview.editors"
+msgstr "Editors"
+
+msgid "plugins.generic.issue.overview.subDate"
+msgstr "Submitted"
+
+msgid "plugins.generic.issue.overview.accDate"
+msgstr "Accepted"
+
+msgid "plugins.generic.issue.overview.reviews"
+msgstr "Reviews"

@@ -1,0 +1,17 @@
+.pkp_structure_content {
+	max-width: 95%;
+}
+
+#futureIssueTable tbody tr {
+	background-color: white;
+}
+
+#futureIssueTable ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#futureIssueTable tr {
+	vertical-align: top;
+}

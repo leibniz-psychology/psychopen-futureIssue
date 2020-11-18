@@ -16,7 +16,7 @@ class FutureIssueHandler extends Handler
         $this->addRoleAssignment(
             array(ROLE_ID_MANAGER),
             array(
-                'index', 'view', 'table',
+                'table',
             )
         );
     }
@@ -33,7 +33,7 @@ class FutureIssueHandler extends Handler
 
     public function table($args, $request)
     {
-
+	    $this->setupTemplate($request);
     	$context = $request->getContext();
     	$contextId = $context ? $context->getId() : CONTEXT_SITE;
         $assignmentDao =& DAORegistry::getDAO('UserStageAssignmentDAO');
@@ -46,10 +46,11 @@ class FutureIssueHandler extends Handler
 	    $submissionsIterator =Services::get('submission')->getMany([
 		    'contextId' => $contextId,
 		    'issueIds' => $issueId,
-		    'status' => STATUS_SCHEDULED,
+		    'status' => [STATUS_SCHEDULED],
 	    ]);
         $result = array();
         foreach ($submissionsIterator as $submission) {
+        	$section = null;
 	        $publication = $submission->getCurrentPublication();
 	        $sectionDao = DAORegistry::getDAO('SectionDAO'); /** @var $sectionDao SectionDAO */
 	        if ($sectionId = $publication->getData('sectionId')) {
@@ -64,6 +65,7 @@ class FutureIssueHandler extends Handler
                 if ($review->getStatus()>6)
                     $rounds[$review->getRound()][] = $review->getReviewerFullName();
             }
+
             foreach (array_reverse($editDecisions) as $editDecision) {
                 if ($editDecision['decision'] == SUBMISSION_EDITOR_DECISION_ACCEPT) {
                     $accepted = $editDecision['dateDecided'];

@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-11-18T12:05:26+00:00\n"
+"PO-Revision-Date: 2020-11-18T12:05:26+00:00\n"
+"Language: \n"
+
+msgid "plugins.generic.issue.overview.displayName"
+msgstr "Artikelübersicht für zukünftige Ausgabe"
+
+msgid "plugins.generic.issue.overview.description"
+msgstr "Dieses Plugin fügt eine zusätzliche Seite hinzu, die einen Überblick über alle Veröffentlichungen einer zukünftigen Ausgabe zeigt."
+
+msgid "plugins.generic.issue.overview.link"
+msgstr "Einreichungsübersicht"
+
+msgid "plugins.generic.issue.overview.title"
+msgstr "Titel"
+
+msgid "plugins.generic.issue.overview.id"
+msgstr "ID"
+
+msgid "plugins.generic.issue.overview.section"
+msgstr "Kategorie"
+
+msgid "plugins.generic.issue.overview.authors"
+msgstr "Autoren"
+
+msgid "plugins.generic.issue.overview.primary"
+msgstr "Hauptkontakt "
+
+msgid "plugins.generic.issue.overview.doi"
+msgstr "DOI"
+
+msgid "plugins.generic.issue.overview.editors"
+msgstr "Editoren"
+
+msgid "plugins.generic.issue.overview.subDate"
+msgstr "Einreichung"
+
+msgid "plugins.generic.issue.overview.accDate"
+msgstr "Akzeptiert"
+
+msgid "plugins.generic.issue.overview.reviews"
+msgstr "Gutachten"
