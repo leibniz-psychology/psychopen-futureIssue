@@ -15,3 +15,7 @@
 #futureIssueTable tr {
 	vertical-align: top;
 }
+
+.app__page{
+	max-width: 90%;
+}

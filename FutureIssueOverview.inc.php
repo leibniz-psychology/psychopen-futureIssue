@@ -31,7 +31,7 @@ class FutureIssueOverview extends GenericPlugin
 				// Register callbacks.
 				HookRegistry::register('LoadHandler', array($this, 'callbackLoadHandler'));
 				HookRegistry::register('TemplateManager::fetch', array($this, 'templateFetchCallback'));
-				$this->_registerTemplateResource();
+				$this->_registerTemplateResource(true);
 			}
 
 			return true;
@@ -71,7 +71,6 @@ class FutureIssueOverview extends GenericPlugin
 					);
 				}
 			}
-
 		}
 	}
 
@@ -89,12 +88,12 @@ class FutureIssueOverview extends GenericPlugin
 				$templateMgr->addStyleSheet(
 					'futureIssueStyle',
 					$request->getBaseUrl().'/'.$this->getPluginPath().'/css/futureIssue.css',
-					array('contexts' => array('backend'))
+					array('contexts' => 'backend')
 				);
 				$templateMgr->addJavaScript(
 					'futureIssueScript',
 					$request->getBaseUrl().'/'.$this->getPluginPath().'/js/futureIssue.js',
-					array('contexts' => array('backend'))
+					array('contexts' => 'backend')
 				);
 				$args[2] = $this->getPluginPath().'/'.'FutureIssueHandler.inc.php';
 				break;
@@ -102,5 +101,4 @@ class FutureIssueOverview extends GenericPlugin
 
 		return false;
 	}
-
 }

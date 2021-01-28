@@ -4,6 +4,10 @@ import('classes.handler.Handler');
 
 class FutureIssueHandler extends Handler
 {
+
+	/** @copydoc PKPHandler::_isBackendPage */
+	var $_isBackendPage = true;
+
     protected $plugin;
 
     /**
@@ -100,6 +104,6 @@ class FutureIssueHandler extends Handler
                 'result' => $result
             )
         );
-        return $templateMgr->display($this->plugin->getTemplateResource('table.tpl'));
+        $templateMgr->display($this->plugin->getTemplateResource('table.tpl'));
     }
 }
